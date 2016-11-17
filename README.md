@@ -4,6 +4,7 @@
 
  After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
  so i will give a little input how to do it - Maybe its not the best way but it works and its secure!
+ Output:
  
  
  ![alt tag](http://desouza.ch/projekte/angular/login/img/login.png)
