@@ -52,4 +52,59 @@ or
 
 ```
 
+
+## Server site
+
+```NodeJS
+ 
+//Handle the request
+app.post("/auth", function(req, res) {
+  
+  Output start
+ // console.log("recived request");
+ 
+ //get BodyInformation
+  var user    = req.body.name;
+  var psw     = req.body.password;
+
+ 
+  //SQL INJ. RegEX
+  user = user.replace(/["']/g, "");
+  user = user.replace(/["']/g, ""); 
+
+  //Database Query
+  connection.query('SELECT user, psw FROM users WHERE user = "'+user+'" AND psw = "'+psw+'" LIMIT 1' , ['Page', 1],
+
+    // Authentication
+      function (err, results) {
+        //On Success
+        try{                                        //on result
+          console.log(results)
+          if(results[0].user ){                       //if user exits
+                                                       //send 200 + Query
+            res.send({
+              success: "true",
+              name: results[0].user,
+              session: req.sessionID
+            });
+            //close the connection
+            res.end();
+          }
+          
+          else {
+            //send error
+            res.send({
+              err: err,
+            });
+            res.end()
+         
+          }
+        }
+        catch (err){console.log("sql statement incorrect")}})
+    });
+
+
+
+```
+
 ...for more info contact me
