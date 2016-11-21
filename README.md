@@ -1,5 +1,5 @@
 ## Simple Angular2 Login with CryptoJS
-#### Example with Ionic 2 and Node JS
+#### send passwort encrypted
 
 
  After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
@@ -15,13 +15,13 @@ $ npm install crypto-js
 ```
 More: https://www.npmjs.com/package/crypto-js
 
-include the node_modul into your service or to your .ts file
-you can do this by adding this path:
+include the node_modul into your service or to your .ts file.
+You can do this by adding this path:
 ###### Adding requiremend
 ```angular
 import * as CryptoJS from '../../../node_modules/crypto-js';
 or
-// or: import CryptoJS = require('crypto-js');
+// import CryptoJS = require('crypto-js');
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ or
   loginfn(usercreds) {
 
     //Test Output 
-    console.log(usercreds.password);
+    console.log(usercreds.name);
     console.log(usercreds.password);
     
     //Encrypt the Passwort with Base64
