@@ -1,5 +1,5 @@
 ## Simple Angular2 Login with CryptoJS
-#### send passwort encrypted
+#### send password encrypted
 
 
  After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
@@ -52,4 +52,4 @@ or
 
 ```
 
-...More coming soon
+...for more info contact me
