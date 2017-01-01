@@ -95,7 +95,7 @@ Angular2
     //Set Infos Ready to Send
     var creds = 'name=' + secureUsercreds.username + '&password=' + secureUsercreds.password;
 
-    //Encrypt Request Message
+    //Encrypt the whole body of the message
     var password = 'HackersSeeIT';
     var encrypted = CryptoJS.AES.encrypt(creds, password);
     var encryptedmessage = encrypted.toString();
