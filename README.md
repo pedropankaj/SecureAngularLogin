@@ -22,6 +22,7 @@ More: https://www.npmjs.com/package/crypto-js
 
 include the node_modul into your service or to your .ts file.
 You can do this by adding this path:
+
 ###### Adding requiremend
 ```angular
 import * as CryptoJS from '../../../node_modules/crypto-js';
@@ -56,8 +57,6 @@ or
     // Do some Stuff with the scure login
     }
 
-
-
 ```
 
 
@@ -65,9 +64,7 @@ or
 
 
 ```Client Site - AngularJS
-
-
- //Send Login to Server
+//Send Login to Server
   login(usercreds) {
 
     //set Standart Values
