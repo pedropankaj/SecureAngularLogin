@@ -220,13 +220,13 @@ or
 
 
 ```
-
-
+Decrypt message 
+```
 //Decrypt Request and parse to JSON
 function myParse(req) {
 
 
-  //Current Secure
+  //Client sliet Passwort
   var password = 'HackersSeeIT';
   //Convert to Base64
 
@@ -256,3 +256,4 @@ function myParse(req) {
 }
 
 
+```
