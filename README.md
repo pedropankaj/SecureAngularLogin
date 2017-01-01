@@ -131,6 +131,7 @@ NodeJS
 //SERVER SITE
 
 //After it was passed to the next layer of middleware
+app.post('/Auth', function(req, res) {
 
     console.log("Request Recived")
   //Encrypt Req
