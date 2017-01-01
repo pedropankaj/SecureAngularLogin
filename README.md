@@ -32,6 +32,7 @@ or
 ## Simple - Usage
 
 ```Angular2
+
   //encrypt Pass - Login 
   loginfn(usercreds) {
 
@@ -54,6 +55,7 @@ or
     };
     // Do some Stuff with the scure login
     }
+
 
 
 ```
@@ -118,11 +120,12 @@ or
     })
 
   }
+  
 ```
 
 ```NodeJS
 
-//After it wass passed to the next layer of middleware
+//After it was passed to the next layer of middleware
 
     console.log("Request Recived")
   //Encrypt Req
