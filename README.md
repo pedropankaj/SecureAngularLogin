@@ -3,7 +3,11 @@
 
 
  After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
- so i will give a little input how to do it - Maybe its not the best way but it works and its secure!
+ so i will give a little input how to do it - Maybe its not the best way but it works
+ 
+ ***
+ Remember AngularJS is on the client site.. your key will be visible for developers!!
+ I use this to get a bit secure for a little man in the middle attack!! 
  Output:
  
  
