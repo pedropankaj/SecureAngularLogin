@@ -6,8 +6,8 @@
  so i will give a little input how to do it - Maybe its not the best way but it works
  
  ***
- Remember AngularJS is on the client site.. your key will be visible for developers!!
- I use this to get a bit secure for a little man in the middle attack!! 
+ *Remember AngularJS is on the client site.. your key will be visible for developers!!
+ I use this to get a bit secure for a little man in the middle attack!! <br>
  Output:
  
  
