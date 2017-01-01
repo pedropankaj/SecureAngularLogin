@@ -1,5 +1,5 @@
 ## Simple Angular2 Login with CryptoJS
-#### send password encrypted
+#### send message "encrypted"
 
 
  After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
