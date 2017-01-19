@@ -208,9 +208,9 @@ app.post('/Auth', function(req, res) {
           }
         }
         catch (err)
-        {console.log("login error")
+        {console.log("error")
           res.send({
-            status:"wellcome" ,
+            status:"error" ,
             success: 'failed',
           });
           res.end();
@@ -218,7 +218,7 @@ app.post('/Auth', function(req, res) {
         }
       }else {
         res.send({
-          status:"wellcome" ,
+          status:"" ,
           success: 'failed',
         });
         res.end();
