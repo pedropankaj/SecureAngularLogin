@@ -146,9 +146,9 @@ app.post('/Auth', function(req, res) {
   var psw  = CryptoJS.AES.encrypt(temppsw , key, {iv: iv});
       psw = psw.toString();
 
-  //prepara RegEX
+  //prepare RegEX (SQL INJ.)
   user = user.replace(/["']/g, "");
-  user = user.replace(/["']/g, ""); //sql will replace  "'"  with \'
+  user = user.replace(/["']/g, ""); 
 
 
   //Database Query
