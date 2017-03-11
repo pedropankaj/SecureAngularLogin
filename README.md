@@ -153,7 +153,7 @@ app.post('/Auth', function(req, res) {
 
   //Database Query
   console.log(user + " Login attempt")
-  connection.query('SELECT LoginID, Username, Passwort FROM Login WHERE Username = "'+user+'" AND Passwort = "'+psw+'" LIMIT 1' , ['Page', 1],
+  connection.query('SELECT LoginID, Username, Passwort FROM Login WHERE Username = "'+user+'" AND Passwort = "'+psw+'" LIMIT 1' , 
     function (err, results)  {
       if(results){
         //On Success
@@ -177,7 +177,7 @@ app.post('/Auth', function(req, res) {
                   connection.query('UPDATE Login SET ' +
                     'SessionID = "'+ req.sessionID +'", ' +
                      'expires = "'+ now +'"' +
-                      ', ipadress = "'+ req.connection.remoteAddress +'" where LoginID =' + LoginID , ['Page', 1]);
+                      ', ipadress = "'+ req.connection.remoteAddress +'" where LoginID =' + LoginID);
 
                     //200 Just for DEMO 
                    res.status(200).send({
