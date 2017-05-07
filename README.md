@@ -16,7 +16,7 @@ $ npm install crypto-js
 ```
 More: https://www.npmjs.com/package/crypto-js
 
-include the node_modul into your service or to your .ts file.
+include the node_module into your service or to your .ts file.
 You can do this by adding this path:
 
 ###### Adding requiremend
