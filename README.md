@@ -1,9 +1,5 @@
 ## Simple Angular2 Login with CryptoJS
 #### send message "encrypted"
-
-
- After long serach I didn't find any good and working Tutorials how to integrate crypto in Angular2 
- so i will give a little input how to do it - Maybe its not the best way but it works
  
  ***
  *Remember AngularJS is on the client site.. your key will be visible!!
