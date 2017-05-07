@@ -49,13 +49,13 @@ import * as CryptoJS from 'crypto-js';
       username: usercreds.username,
       password: encrypted.toString()
     };
-    // Do some Stuff with the scure login
+    // Do some Stuff with the secure login
     }
 
 ```
 
 
-## Example with NodeJS 
+## Example with Angular & NodeJS 
 
 
 ```
@@ -73,45 +73,45 @@ Angular2
     //set Header 
     headers.append('Content-Type', 'application/X-www-form-urlencoded');
 
-    //Encrypt the Passwort 
+    //Encrypt the Password 
     //Man in the Middle Secure v1
     var key = CryptoJS.enc.Base64.parse("HackersSeeIT2");
     var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
     var encrypted = CryptoJS.AES.encrypt(usercreds.password, key, {iv: iv});
 
-    //Save the Login in to an Array
+    //Save the Login in to an array
     var secureUsercreds =
     {
       username: usercreds.username,
       password: encrypted.toString()
     };
 
-
-    //Set Infos Ready to Send
     var creds = 'name=' + secureUsercreds.username + '&password=' + secureUsercreds.password;
 
-    //Encrypt the whole body of the message
+    //Encrypt the whole body 
     var password = 'HackersSeeIT';
     var encrypted = CryptoJS.AES.encrypt(creds, password);
     var encryptedmessage = encrypted.toString();
 
-
-
+    //POST ->
     return new Promise((resolve) => {
       try {
         this._http.post('http://' + this.ipAdress + ':' + this.port + '/Auth', 'message=' + encryptedmessage, {headers: headers}).subscribe((data) => {
          // console.log(data.json()) output
          
          //IF Server sends 200
-          if (data.json().success == true) {
-    
+          if (data.json().success == true)
+          {
            //do Stuff.. example:
+            resolve(this.isLoggedin)
            // this.isLoggedin = true;
-
-          } else {
+          } 
+          else 
+          {
+           //reject()
             console.log("Login error")
           }
-          resolve(this.isLoggedin)
+         
         })
       }catch (err){console.log("Login error")}
     })
@@ -153,17 +153,16 @@ app.post('/Auth', function(req, res) {
       if(results){
         //On Success
         try{
-          console.log(results[0].Username)
-
-          //Check if not an injection
+          //Check if its not an injection
           LoginID = results[0].LoginID;
           Username = results[0].Username;
-          if(results[0].Username != 'sqjINJSave' ){
-
+          if(results[0].Username != 'sqjINJSave' )
+          {
             //Get full User Information
             console.log(Username + " has Logged in. IDnr :"  + LoginID);
             req.session.user = Username;  //Save Session
 
+            //get Client example
             var info = getMitarbeiterInfo(LoginID);
             info.then(function (results) {
 
@@ -174,36 +173,27 @@ app.post('/Auth', function(req, res) {
                      'expires = "'+ now +'"' +
                       ', ipadress = "'+ req.connection.remoteAddress +'" where LoginID =' + LoginID);
 
-                    //200 Just for DEMO 
+                    //200 Example
                    res.status(200).send({
                     success:true,
                     username: Username,
-                    nachname: results[0].Nachname,
-                    email: results[0].Email,
-                    telefon: results[0].Telefon,
                     message: 1,
                     cockie: req.cookies,
                     session: req.sessionID,
-                    ipadress: req.connection.remoteAddress,
-                    Sessionipadress: req.session.ip,
+                 // Sessionipadress: req.session.ip,
                     SignedCookies: req.signedCookies,
                     expiried: ((req.session.cookie.maxAge / 36000) + 's')
                   });
-
-                  return"";
                 }});
-
-          }else {
-
-
-            res.end({
-              success:false
-            });
-            return err
+          }
+          else
+          {
+            res.end({success:false});
+            return err;
           }
         }
         catch (err)
-        {console.log("error")
+        { console.log("error")
           res.send({
             status:"error" ,
             success: 'failed',
