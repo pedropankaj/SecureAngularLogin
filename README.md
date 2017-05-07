@@ -25,8 +25,8 @@ You can do this by adding this path:
 
 ###### Adding requiremend
 ```angular
-import * as CryptoJS from '../../../node_modules/crypto-js';
-or
+import * as CryptoJS from 'crypto-js';
+//or
 // import CryptoJS = require('crypto-js');
 ```
 
