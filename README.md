@@ -2,7 +2,7 @@
 #### send message "encrypted"
  
  ***
- *Remember AngularJS is on the client site.. your key will be visible!!
+ *Remember Angular and Javasript is a clientsite skript .. your key will be visible!!
  
  <br>
  Output:
