@@ -33,7 +33,6 @@ import * as CryptoJS from 'crypto-js';
   //encrypt Pass - Login 
   loginfn(usercreds) {
 
-    
     console.log(usercreds.name);
     console.log(usercreds.password);
     
@@ -50,7 +49,7 @@ import * as CryptoJS from 'crypto-js';
       username: usercreds.username,
       password: encrypted.toString()
     };
-    // Do some Stuff with the secure login
+    // Do some Stuff 
     }
 
 ```
