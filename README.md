@@ -33,7 +33,7 @@ import * as CryptoJS from 'crypto-js';
   //encrypt Pass - Login 
   loginfn(usercreds) {
 
-    //Test Output - just for the demo
+    
     console.log(usercreds.name);
     console.log(usercreds.password);
     
