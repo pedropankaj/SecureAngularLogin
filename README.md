@@ -13,6 +13,7 @@
 ###### Requiremend
 ```npm
 $ npm install crypto-js
+$ npm install @types/crypto-js --save-dev
 ```
 More: https://www.npmjs.com/package/crypto-js
 
@@ -97,23 +98,11 @@ Angular2
     return new Promise((resolve) => {
       try {
         this._http.post('http://' + this.ipAdress + ':' + this.port + '/Auth', 'message=' + encryptedmessage, {headers: headers}).subscribe((data) => {
-         // console.log(data.json()) output
-         
-         //IF Server sends 200
-          if (data.json().success == true)
-          {
-           //do Stuff.. example:
-            resolve(this.isLoggedin)
-           // this.isLoggedin = true;
-          } 
-          else 
-          {
-           //reject()
-            console.log("Login error")
-          }
-         
+              
+           //do Stuff.. 
+               
         })
-      }catch (err){console.log("Login error")}
+      }catch (err){}
     })
 
   }
@@ -130,7 +119,7 @@ app.post('/Auth', function(req, res) {
 
     console.log("Request Recived")
   //Encrypt Req
-   var obj = myParse(req);
+   var obj = parser(req);
 
   //Declare User info
   var user = obj.name;
@@ -141,85 +130,24 @@ app.post('/Auth', function(req, res) {
   var psw  = CryptoJS.AES.encrypt(temppsw , key, {iv: iv});
       psw = psw.toString();
 
-  //prepare RegEX (SQL INJ.)
   user = user.replace(/["']/g, "");
   user = user.replace(/["']/g, ""); 
 
 
   //Database Query
-  console.log(user + " Login attempt")
-  connection.query('SELECT LoginID, Username, Passwort FROM Login WHERE Username = "'+user+'" AND Passwort = "'+psw+'" LIMIT 1' , 
+  console.log(user + " Login || Example")
+  connection.execute('SELECT LoginID, Username, Passwort FROM Login WHERE Username = ? AND Passwort = ? LIMIT 1' ,[user,psw], 
     function (err, results)  {
-      if(results){
-        //On Success
-        try{
-          //Check if its not an injection
-          LoginID = results[0].LoginID;
-          Username = results[0].Username;
-          if(results[0].Username != 'sqjINJSave' )
-          {
-            //Get full User Information
-            console.log(Username + " has Logged in. IDnr :"  + LoginID);
-            req.session.user = Username;  //Save Session
-
-            //get Client example
-            var info = getMitarbeiterInfo(LoginID);
-            info.then(function (results) {
-
-                if(results) {
-                  //Tell Database Session ID
-                  connection.query('UPDATE Login SET ' +
-                    'SessionID = "'+ req.sessionID +'", ' +
-                     'expires = "'+ now +'"' +
-                      ', ipadress = "'+ req.connection.remoteAddress +'" where LoginID =' + LoginID);
-
-                    //200 Example
-                   res.status(200).send({
-                    success:true,
-                    username: Username,
-                    message: 1,
-                    cockie: req.cookies,
-                    session: req.sessionID,
-                 // Sessionipadress: req.session.ip,
-                    SignedCookies: req.signedCookies,
-                    expiried: ((req.session.cookie.maxAge / 36000) + 's')
-                  });
-                }});
-          }
-          else
-          {
-            res.end({success:false});
-            return err;
-          }
-        }
-        catch (err)
-        { console.log("error")
-          res.send({
-            status:"error" ,
-            success: 'failed',
-          });
-          res.end();
-          return;
-        }
-      }else {
-        res.send({
-          status:"" ,
-          success: 'failed',
-        });
-        res.end();
-        return err;
-      }
-    })
-
-
-});
+         //DO STUFF
+      })
+})
 
 
 ```
 Decrypt message 
 ```
-//Decrypt Request and parse to JSON
-function myParse(req) {
+//Decrypt Request
+function parser(req) {
 
 
   //Client sliet Passwort
